@@ -1,0 +1,207 @@
+{
+  "description": "Maps CodeIgniter application/modules controllers to billing-next App Router and server actions. Excludes duplicate CI/New folder tree.",
+  "phpRoot": "application/modules",
+  "nextRoot": "billing-next",
+  "entries": [
+    {
+      "php": "login/controllers/Login.php",
+      "next": ["app/login/page.tsx"],
+      "actions": []
+    },
+    {
+      "php": "admin/controllers/Dashboard.php",
+      "next": ["app/admin/dashboard/page.tsx"],
+      "actions": []
+    },
+    {
+      "php": "admin/controllers/Users.php",
+      "next": ["app/admin/users/page.tsx", "app/admin/users/new/page.tsx", "app/admin/users/[id]/page.tsx"],
+      "actions": ["actions/forms.ts — admin user CRUD, renew, reset, delete, bulk renew"]
+    },
+    {
+      "php": "admin/controllers/Dealers.php",
+      "next": ["app/admin/dealers/page.tsx", "app/admin/dealers/new/page.tsx", "app/admin/dealers/[id]/page.tsx"],
+      "actions": []
+    },
+    {
+      "php": "admin/controllers/Resellers.php",
+      "next": ["app/admin/resellers/page.tsx", "app/admin/resellers/new/page.tsx", "app/admin/resellers/[id]/page.tsx"],
+      "actions": []
+    },
+    {
+      "php": "admin/controllers/Managers.php",
+      "next": ["app/admin/managers/page.tsx", "app/admin/managers/new/page.tsx", "app/admin/managers/[id]/page.tsx"],
+      "actions": []
+    },
+    {
+      "php": "admin/controllers/Transactions.php",
+      "next": ["app/admin/transactions/page.tsx"],
+      "actions": []
+    },
+    {
+      "php": "admin/controllers/Deductions.php",
+      "next": ["app/admin/deductions/page.tsx"],
+      "actions": []
+    },
+    {
+      "php": "admin/controllers/Settings.php",
+      "next": ["app/admin/settings/page.tsx"],
+      "actions": ["saveSettingsAction"]
+    },
+    {
+      "php": "admin/controllers/Tickets.php",
+      "next": ["app/admin/tickets/page.tsx", "app/admin/tickets/create/page.tsx", "app/admin/tickets/[id]/page.tsx", "app/admin/tickets/complete/page.tsx", "app/admin/tickets/dashboard/page.tsx"],
+      "actions": ["app/api/admin/tickets/*"]
+    },
+    {
+      "php": "admin/controllers/Profile.php",
+      "next": ["app/admin/profile/page.tsx"],
+      "actions": []
+    },
+    {
+      "php": "admin/controllers/Message.php",
+      "next": ["app/admin/message/page.tsx"],
+      "actions": []
+    },
+    {
+      "php": "admin/controllers/Logout.php",
+      "next": ["app/logout/route.ts"],
+      "actions": []
+    },
+    {
+      "php": "dealer/controllers/Dashboard.php",
+      "next": ["app/dealer/page.tsx"],
+      "actions": []
+    },
+    {
+      "php": "dealer/controllers/Users.php",
+      "next": ["app/dealer/users/page.tsx", "app/dealer/users/new/page.tsx", "app/dealer/users/[id]/page.tsx"],
+      "actions": ["actions/forms.ts — dealer portal user ops"]
+    },
+    {
+      "php": "dealer/controllers/Transactions.php",
+      "next": ["app/dealer/transactions/page.tsx"],
+      "actions": []
+    },
+    {
+      "php": "dealer/controllers/Tickets.php",
+      "next": ["app/dealer/tickets/page.tsx", "app/dealer/tickets/create/page.tsx", "app/dealer/tickets/[id]/page.tsx", "app/dealer/tickets/complete/page.tsx", "app/dealer/tickets/dashboard/page.tsx"],
+      "actions": []
+    },
+    {
+      "php": "dealer/controllers/Profile.php",
+      "next": ["app/dealer/profile/page.tsx"],
+      "actions": []
+    },
+    {
+      "php": "dealer/controllers/Message.php",
+      "next": ["app/dealer/message/page.tsx"],
+      "actions": []
+    },
+    {
+      "php": "dealer/controllers/Logout.php",
+      "next": ["app/logout/route.ts"],
+      "actions": []
+    },
+    {
+      "php": "dealer/controllers/Check_mac.php",
+      "next": ["app/dealer/check-mac/page.tsx"],
+      "actions": ["checkMacDealerAction"]
+    },
+    {
+      "php": "reseller/controllers/Dashboard.php",
+      "next": ["app/reseller/page.tsx"],
+      "actions": []
+    },
+    {
+      "php": "reseller/controllers/Users.php",
+      "next": ["app/reseller/users/page.tsx", "app/reseller/users/new/page.tsx", "app/reseller/users/[id]/page.tsx"],
+      "actions": ["createResellerEndUserAction", "actions/forms.ts — reseller portal user ops"]
+    },
+    {
+      "php": "reseller/controllers/Dealers.php",
+      "next": ["app/reseller/dealers/page.tsx", "app/reseller/dealers/new/page.tsx", "app/reseller/dealers/[dealer]/page.tsx"],
+      "actions": ["Dealer edit + transaction panel replaces separate PHP dealers/transactions URL"]
+    },
+    {
+      "php": "reseller/controllers/Dealers_users.php",
+      "next": ["app/reseller/dealers/[dealer]/users/page.tsx", "app/reseller/dealers/[dealer]/users/new/page.tsx"],
+      "actions": ["setResellerEndUserStatusQuickAction", "createResellerDealerEndUserAction"]
+    },
+    {
+      "php": "reseller/controllers/Transactions.php",
+      "next": ["app/reseller/transactions/page.tsx"],
+      "actions": []
+    },
+    {
+      "php": "reseller/controllers/Profile.php",
+      "next": ["app/reseller/profile/page.tsx"],
+      "actions": []
+    },
+    {
+      "php": "reseller/controllers/Message.php",
+      "next": ["app/reseller/message/page.tsx"],
+      "actions": []
+    },
+    {
+      "php": "reseller/controllers/Logout.php",
+      "next": ["app/logout/route.ts"],
+      "actions": []
+    },
+    {
+      "php": "reseller/controllers/Check_mac.php",
+      "next": ["app/reseller/check-mac/page.tsx"],
+      "actions": ["checkMacResellerAction"]
+    },
+    {
+      "php": "manager/controllers/Dashboard.php",
+      "next": ["app/manager/page.tsx"],
+      "actions": []
+    },
+    {
+      "php": "manager/controllers/Users.php",
+      "next": ["app/manager/users/page.tsx", "app/manager/users/new/page.tsx", "app/manager/users/[id]/page.tsx"],
+      "actions": ["setManagerUserStatusQuickAction", "createManagerEndUserAction"]
+    },
+    {
+      "php": "manager/controllers/Dealers.php",
+      "next": ["app/manager/dealers/page.tsx", "app/manager/dealers/[username]/page.tsx"],
+      "actions": []
+    },
+    {
+      "php": "manager/controllers/Resellers.php",
+      "next": ["app/manager/resellers/page.tsx", "app/manager/resellers/new/page.tsx", "app/manager/resellers/[username]/page.tsx"],
+      "actions": []
+    },
+    {
+      "php": "manager/controllers/Transactions.php",
+      "next": ["app/manager/transactions/page.tsx"],
+      "actions": []
+    },
+    {
+      "php": "manager/controllers/Tickets.php",
+      "next": ["app/manager/tickets/page.tsx", "app/manager/tickets/create/page.tsx", "app/manager/tickets/[id]/page.tsx", "app/manager/tickets/complete/page.tsx", "app/manager/tickets/dashboard/page.tsx"],
+      "actions": []
+    },
+    {
+      "php": "manager/controllers/Profile.php",
+      "next": ["app/manager/profile/page.tsx"],
+      "actions": []
+    },
+    {
+      "php": "manager/controllers/Message.php",
+      "next": ["app/manager/message/page.tsx"],
+      "actions": []
+    },
+    {
+      "php": "manager/controllers/Logout.php",
+      "next": ["app/logout/route.ts"],
+      "actions": []
+    },
+    {
+      "php": "manager/controllers/Check_mac.php",
+      "next": ["app/manager/check-mac/page.tsx"],
+      "actions": ["checkMacManagerAction"]
+    }
+  ]
+}

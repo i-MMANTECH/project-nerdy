@@ -1,0 +1,688 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * Theme: enterprise light + neon-glass dark.
+ * Token names are stable contracts consumed across components/ — only values move.
+ * Brand stays cyan; secondary moves to magenta in dark for the gaming-pro accent split.
+ */
+
+:root {
+  --font-size: 16px;
+  --background: #f5f7fb;
+  --foreground: #0f172a;
+  --card: #ffffff;
+  --card-foreground: #0f172a;
+  --popover: #ffffff;
+  --popover-foreground: #0f172a;
+  --primary: #0e7490;
+  --primary-foreground: #ffffff;
+  --secondary: #06b6d4;
+  --secondary-foreground: #ffffff;
+  --muted: #eef2f7;
+  --muted-foreground: #475569;
+  --accent: #e0f7fa;
+  --accent-foreground: #0e7490;
+  --destructive: #dc2626;
+  --destructive-foreground: #ffffff;
+  --border: #dbe3ec;
+  --input: #dbe3ec;
+  --input-background: #ffffff;
+  --switch-background: #cbd5e1;
+  --font-weight-medium: 500;
+  --font-weight-normal: 400;
+  --ring: #06b6d4;
+  --chart-1: #0891b2;
+  --chart-2: #06b6d4;
+  --chart-3: #6366f1;
+  --chart-4: #a855f7;
+  --chart-5: #ec4899;
+  --radius: 0.625rem;
+  --app-data-table-max-h: min(72vh, 44rem);
+  --sidebar: #ffffff;
+  --sidebar-foreground: #0f172a;
+  --sidebar-primary: #0e7490;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #f0f9ff;
+  --sidebar-accent-foreground: #0e7490;
+  --sidebar-border: #dbe3ec;
+  --sidebar-ring: #06b6d4;
+
+  /* Extension tokens: glass surfaces and neon accents (used by gaming-pro components). */
+  --neon-cyan: #22d3ee;
+  --neon-violet: #8b5cf6;
+  --neon-magenta: #ec4899;
+  --neon-amber: #f59e0b;
+  --glass-bg: rgba(255, 255, 255, 0.66);
+  --glass-border: rgba(15, 23, 42, 0.08);
+  --glow-cyan: 0 0 0 1px rgba(34, 211, 238, 0.18), 0 8px 32px -10px rgba(34, 211, 238, 0.30);
+  --glow-magenta: 0 0 0 1px rgba(236, 72, 153, 0.18), 0 8px 32px -10px rgba(236, 72, 153, 0.32);
+  --grid-line: rgba(15, 23, 42, 0.06);
+}
+
+/*
+ * Dark — Cyberpunk Command Center edition.
+ * Deep black-blue base (#050507), electric cyan + magenta + acid green neon system.
+ * Glass surfaces with strong neon hover borders. Tuned for IPTV billing operations.
+ */
+.dark {
+  --background: #050507;
+  --foreground: #f0f9ff;
+  --card: #0a0a12;
+  --card-foreground: #f0f9ff;
+  --popover: #0a0a12;
+  --popover-foreground: #f0f9ff;
+  --primary: #00f0ff;
+  --primary-foreground: #050507;
+  --secondary: #14141f;
+  --secondary-foreground: #f0f9ff;
+  --muted: #14141d;
+  --muted-foreground: #8b92ad;
+  --accent: #0a1f2e;
+  --accent-foreground: #00f0ff;
+  --destructive: #ff4d6d;
+  --destructive-foreground: #fff5f8;
+  --border: #1a1a26;
+  --input: #1a1a26;
+  --input-background: #0a0a14;
+  --switch-background: #1f1f2e;
+  --ring: #00f0ff;
+  --chart-1: #00f0ff;
+  --chart-2: #ff00aa;
+  --chart-3: #22ff88;
+  --chart-4: #c026d3;
+  --chart-5: #ffd700;
+  --sidebar: #07070d;
+  --sidebar-foreground: #e6edf6;
+  --sidebar-primary: #00f0ff;
+  --sidebar-primary-foreground: #050507;
+  --sidebar-accent: #0a1f2e;
+  --sidebar-accent-foreground: #00f0ff;
+  --sidebar-border: #14141f;
+  --sidebar-ring: #00f0ff;
+
+  --neon-cyan: #00f0ff;
+  --neon-magenta: #ff00aa;
+  --neon-violet: #c026d3;
+  --neon-green: #22ff88;
+  --neon-gold: #ffd700;
+  --neon-amber: #fbbf24;
+  --glass-bg: rgba(10, 10, 18, 0.65);
+  --glass-border: rgba(0, 240, 255, 0.18);
+  --glow-cyan: 0 0 0 1px rgba(0, 240, 255, 0.28), 0 12px 48px -12px rgba(0, 240, 255, 0.55);
+  --glow-magenta: 0 0 0 1px rgba(255, 0, 170, 0.28), 0 12px 48px -12px rgba(255, 0, 170, 0.55);
+  --glow-green: 0 0 0 1px rgba(34, 255, 136, 0.28), 0 12px 48px -12px rgba(34, 255, 136, 0.50);
+  --glow-gold: 0 0 0 1px rgba(255, 215, 0, 0.28), 0 12px 48px -12px rgba(255, 215, 0, 0.45);
+  --grid-line: rgba(0, 240, 255, 0.04);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-input-background: var(--input-background);
+  --color-switch-background: var(--switch-background);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-neon-cyan: var(--neon-cyan);
+  --color-neon-violet: var(--neon-violet);
+  --color-neon-magenta: var(--neon-magenta);
+  --color-neon-green: var(--neon-green);
+  --color-neon-gold: var(--neon-gold);
+  --color-neon-amber: var(--neon-amber);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --font-sans: var(--font-ui-sans), ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+  --font-mono: ui-monospace, "Cascadia Mono", "Segoe UI Mono", Menlo, Consolas, monospace;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  body {
+    @apply bg-background text-sm text-foreground antialiased md:text-base;
+    text-rendering: optimizeLegibility;
+    background-image:
+      radial-gradient(1200px 600px at 100% -10%, color-mix(in oklab, var(--primary) 12%, transparent), transparent 60%),
+      radial-gradient(900px 500px at -10% 110%, color-mix(in oklab, var(--neon-magenta) 10%, transparent), transparent 60%);
+    background-attachment: fixed;
+  }
+
+  /* Holographic grid: subtle 32px lattice — invisible but adds depth on dark surfaces. */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    background-image:
+      linear-gradient(var(--grid-line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+    background-size: 32px 32px;
+    -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 40%, black 30%, transparent 75%);
+    mask-image: radial-gradient(ellipse 80% 60% at 50% 40%, black 30%, transparent 75%);
+    opacity: 0.55;
+  }
+
+  body > * {
+    position: relative;
+    z-index: 1;
+  }
+}
+
+@layer base {
+  :where(:not(:has([class*=" text-"]), :not(:has([class^="text-"])))) {
+    h1 {
+      font-size: var(--text-3xl);
+      font-weight: 700;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+    }
+
+    h2 {
+      font-size: var(--text-2xl);
+      font-weight: 650;
+      line-height: 1.25;
+      letter-spacing: -0.015em;
+    }
+
+    h3 {
+      font-size: var(--text-xl);
+      font-weight: 600;
+      line-height: 1.3;
+      letter-spacing: -0.01em;
+    }
+
+    h4 {
+      font-size: var(--text-lg);
+      font-weight: 600;
+      line-height: 1.35;
+    }
+
+    p {
+      font-size: var(--text-sm);
+      font-weight: var(--font-weight-normal);
+      line-height: 1.6;
+    }
+
+    label {
+      font-size: var(--text-sm);
+      font-weight: var(--font-weight-medium);
+      line-height: 1.5;
+    }
+
+    button {
+      font-size: var(--text-sm);
+      font-weight: var(--font-weight-medium);
+      line-height: 1.5;
+    }
+
+    input {
+      font-size: var(--text-sm);
+      font-weight: var(--font-weight-normal);
+      line-height: 1.5;
+    }
+  }
+}
+
+html {
+  font-size: var(--font-size);
+  scroll-padding-top: 5rem;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* Slim scrollbars for dense tables / package lists. */
+@layer utilities {
+  .app-data-table-scroll {
+    max-height: var(--app-data-table-max-h);
+    overflow: auto;
+  }
+  .thin-scrollbar {
+    scrollbar-width: thin;
+    scrollbar-color: rgb(100 116 139 / 0.45) transparent;
+  }
+  .thin-scrollbar::-webkit-scrollbar {
+    height: 6px;
+    width: 6px;
+  }
+  .thin-scrollbar::-webkit-scrollbar-thumb {
+    background-color: rgb(100 116 139 / 0.45);
+    border-radius: 9999px;
+  }
+  .thin-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+  }
+}
+
+/* Recharts hover cursor: force transparent (no grey hover strip). */
+.recharts-tooltip-cursor {
+  fill: rgb(148 163 184 / 0.05) !important;
+  stroke: transparent !important;
+  stroke-width: 0 !important;
+  opacity: 1 !important;
+}
+
+@layer base {
+  @media (max-width: 1023px) {
+    button,
+    [type="button"],
+    [type="submit"],
+    a[href],
+    summary {
+      touch-action: manipulation;
+    }
+  }
+}
+
+@layer components {
+  form select {
+    @apply h-10 w-full min-w-0 cursor-pointer appearance-none rounded-lg border border-input bg-input-background py-2 pl-3 pr-10 text-base text-foreground outline-none transition-[border-color,box-shadow,background-color] duration-200 ease-out;
+    @apply hover:border-border hover:bg-muted/20 focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 disabled:cursor-not-allowed disabled:opacity-50;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2394a3b8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.65rem center;
+    background-size: 1rem;
+  }
+
+  .dark form select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2394a3b8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  }
+}
+
+/*
+ * Gaming-pro utilities: glass surfaces, neon accents, motion primitives.
+ * Compose with Tailwind classes — never use these as the sole style on critical UI.
+ */
+@layer utilities {
+  .fx-glass {
+    background-color: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    -webkit-backdrop-filter: saturate(140%) blur(14px);
+    backdrop-filter: saturate(140%) blur(14px);
+  }
+
+  .fx-glow-cyan {
+    box-shadow: var(--glow-cyan);
+  }
+  .fx-glow-magenta {
+    box-shadow: var(--glow-magenta);
+  }
+
+  .fx-ring-grad {
+    position: relative;
+    isolation: isolate;
+  }
+  .fx-ring-grad::before {
+    content: "";
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(135deg, var(--neon-cyan), transparent 35%, transparent 65%, var(--neon-magenta));
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+    opacity: 0.65;
+  }
+
+  .fx-rise {
+    animation: fx-rise 360ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+  .fx-rise-stagger > * {
+    animation: fx-rise 360ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+  .fx-rise-stagger > *:nth-child(1) { animation-delay: 0ms; }
+  .fx-rise-stagger > *:nth-child(2) { animation-delay: 60ms; }
+  .fx-rise-stagger > *:nth-child(3) { animation-delay: 120ms; }
+  .fx-rise-stagger > *:nth-child(4) { animation-delay: 180ms; }
+  .fx-rise-stagger > *:nth-child(5) { animation-delay: 240ms; }
+  .fx-rise-stagger > *:nth-child(6) { animation-delay: 300ms; }
+
+  .fx-shine {
+    position: relative;
+    overflow: hidden;
+  }
+  .fx-shine::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    transform: translateX(-120%);
+    background: linear-gradient(120deg, transparent 30%, rgba(255, 255, 255, 0.18) 50%, transparent 70%);
+    transition: transform 750ms cubic-bezier(0.22, 1, 0.36, 1);
+    pointer-events: none;
+  }
+  .fx-shine:hover::after,
+  .fx-shine:focus-visible::after {
+    transform: translateX(120%);
+  }
+
+  .fx-pulse-dot {
+    animation: fx-pulse-dot 1.6s ease-in-out infinite;
+  }
+
+  .fx-text-grad {
+    background: linear-gradient(90deg, var(--neon-cyan), var(--neon-violet) 60%, var(--neon-magenta));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+  }
+
+  /* HUD: cyberpunk card with optional cut corners. Apply with `.fx-hud` (and optionally `.fx-hud-corners`). */
+  .fx-hud {
+    position: relative;
+    isolation: isolate;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    -webkit-backdrop-filter: saturate(140%) blur(18px);
+    backdrop-filter: saturate(140%) blur(18px);
+    transition: box-shadow 250ms ease-out, transform 250ms ease-out, border-color 250ms ease-out;
+  }
+  .fx-hud:hover {
+    border-color: rgba(0, 245, 255, 0.35);
+    box-shadow: var(--glow-cyan);
+  }
+  .fx-hud-corners {
+    /* notched bottom-right + top-left corners — pure cyberpunk HUD look */
+    clip-path: polygon(
+      14px 0,
+      100% 0,
+      100% calc(100% - 14px),
+      calc(100% - 14px) 100%,
+      0 100%,
+      0 14px
+    );
+  }
+
+  /* Holographic edge: animated 1px gradient that sweeps the border. Use sparingly. */
+  .fx-holo-edge {
+    position: relative;
+  }
+  .fx-holo-edge::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: conic-gradient(
+      from 0deg,
+      transparent 0deg,
+      var(--neon-cyan) 70deg,
+      transparent 130deg,
+      transparent 230deg,
+      var(--neon-magenta) 290deg,
+      transparent 360deg
+    );
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    animation: fx-holo-rotate 8s linear infinite;
+    pointer-events: none;
+    opacity: 0.55;
+  }
+
+  /* Neon outline button — soft glow when hovered. Pair with bg-card text-primary. */
+  .fx-neon-outline {
+    border: 1px solid color-mix(in oklab, var(--neon-cyan) 45%, transparent);
+    box-shadow: 0 0 0 1px transparent, 0 0 18px -4px color-mix(in oklab, var(--neon-cyan) 40%, transparent);
+    transition: box-shadow 220ms ease-out, border-color 220ms ease-out;
+  }
+  .fx-neon-outline:hover {
+    border-color: var(--neon-cyan);
+    box-shadow: 0 0 0 1px var(--neon-cyan), 0 0 28px -2px color-mix(in oklab, var(--neon-cyan) 70%, transparent);
+  }
+
+  /* Glowing data point — used by Recharts dots and KPI accent indicators. */
+  .fx-glow-dot {
+    box-shadow: 0 0 0 2px color-mix(in oklab, var(--neon-cyan) 30%, transparent), 0 0 14px var(--neon-cyan);
+  }
+
+  /* Color-coded credit/value tokens. */
+  .fx-credit-up { color: var(--neon-green); text-shadow: 0 0 12px color-mix(in oklab, var(--neon-green) 60%, transparent); }
+  .fx-credit-down { color: var(--neon-magenta); text-shadow: 0 0 12px color-mix(in oklab, var(--neon-magenta) 60%, transparent); }
+  .fx-credit-gold { color: var(--neon-gold); text-shadow: 0 0 14px color-mix(in oklab, var(--neon-gold) 55%, transparent); }
+
+  /* Hex-grid: low-intensity honeycomb pattern for HUD panels. Apply on a wrapper. */
+  .fx-hex-grid {
+    background-image:
+      radial-gradient(circle at 50% 50%, transparent 0, transparent 14px, var(--grid-line) 14px, var(--grid-line) 14.5px, transparent 14.6px);
+    background-size: 30px 30px;
+  }
+
+  /* Slim segmented display: dotted underline reminiscent of LCD / segment readouts. */
+  .fx-segmented {
+    text-shadow: 0 0 6px color-mix(in oklab, currentColor 65%, transparent);
+    letter-spacing: 0.04em;
+  }
+
+  /*
+   * Path A — CSS-based 3D depth.
+   * `.fx-3d-tilt` parent wrapper: gives child cards a subtle perspective lift on hover.
+   * `.fx-bevel` on a card: multi-layer inner highlight + outer glow → looks like beveled glass under light.
+   * `.fx-icon-3d` on an icon container: drop-shadow + tinted glow stack → icon "floats" with a halo.
+   * All GPU-composited (transform / opacity / filter), reduced-motion safe.
+   */
+  .fx-3d-tilt {
+    perspective: 900px;
+    transform-style: preserve-3d;
+  }
+  .fx-3d-tilt > * {
+    transition: transform 320ms cubic-bezier(0.22, 1, 0.36, 1), box-shadow 320ms ease-out;
+    will-change: transform;
+  }
+  .fx-3d-tilt:hover > * {
+    transform: translateZ(0) rotateX(2.5deg) rotateY(-2deg) scale(1.012);
+  }
+
+  .fx-bevel {
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.07),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.45),
+      0 1px 0 rgba(255, 255, 255, 0.04),
+      0 12px 32px -16px rgba(0, 0, 0, 0.55),
+      0 24px 60px -32px color-mix(in oklab, var(--neon-cyan) 30%, transparent);
+  }
+  .fx-bevel-magenta {
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.07),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.45),
+      0 1px 0 rgba(255, 255, 255, 0.04),
+      0 12px 32px -16px rgba(0, 0, 0, 0.55),
+      0 24px 60px -32px color-mix(in oklab, var(--neon-magenta) 30%, transparent);
+  }
+  .fx-bevel-green {
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.07),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.45),
+      0 1px 0 rgba(255, 255, 255, 0.04),
+      0 12px 32px -16px rgba(0, 0, 0, 0.55),
+      0 24px 60px -32px color-mix(in oklab, var(--neon-green) 30%, transparent);
+  }
+
+  .fx-icon-3d {
+    filter:
+      drop-shadow(0 1px 0 rgba(255, 255, 255, 0.10))
+      drop-shadow(0 6px 14px color-mix(in oklab, currentColor 35%, transparent))
+      drop-shadow(0 0 18px color-mix(in oklab, currentColor 25%, transparent));
+    transition: filter 240ms ease-out, transform 240ms ease-out;
+  }
+  .fx-icon-3d:hover {
+    transform: translateZ(0) translateY(-1px) scale(1.05);
+  }
+
+  /* Page-top scroll progress bar (dashboard hero strip uses this). */
+  .fx-progress-bar {
+    background-image: linear-gradient(90deg,
+      transparent 0%,
+      var(--neon-cyan) 25%,
+      var(--neon-magenta) 60%,
+      var(--neon-green) 100%);
+    background-size: 200% 100%;
+    animation: fx-bg-shift 8s linear infinite;
+  }
+}
+
+@keyframes fx-bg-shift {
+  to { background-position: -200% 0; }
+}
+
+@keyframes fx-holo-rotate {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes ticker {
+  from { transform: translate3d(0, 0, 0); }
+  to { transform: translate3d(-50%, 0, 0); }
+}
+
+@keyframes fx-ring-orbit {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes fx-breath {
+  0%, 100% { transform: scale(1); filter: drop-shadow(0 0 12px color-mix(in oklab, var(--neon-cyan) 30%, transparent)); }
+  50%      { transform: scale(1.025); filter: drop-shadow(0 0 22px color-mix(in oklab, var(--neon-cyan) 60%, transparent)); }
+}
+
+@layer utilities {
+  .fx-breath { animation: fx-breath 3.6s ease-in-out infinite; }
+  .fx-ring-orbit { animation: fx-ring-orbit 16s linear infinite; }
+}
+
+@keyframes fx-rise {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.985);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes fx-pulse-dot {
+  0%, 100% {
+    box-shadow: 0 0 0 0 color-mix(in oklab, var(--primary) 60%, transparent);
+  }
+  50% {
+    box-shadow: 0 0 0 6px color-mix(in oklab, var(--primary) 0%, transparent);
+  }
+}
+
+@keyframes fx-overlay-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes fx-overlay-out {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+@keyframes fx-content-in {
+  from { opacity: 0; transform: translate(-50%, calc(-50% + 8px)) scale(0.97); }
+  to { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+}
+@keyframes fx-content-out {
+  from { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+  to { opacity: 0; transform: translate(-50%, calc(-50% + 4px)) scale(0.98); }
+}
+
+@keyframes fx-orb-drift {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+  33% { transform: translate3d(5%, -3%, 0) scale(1.06); }
+  66% { transform: translate3d(-4%, 4%, 0) scale(0.95); }
+}
+
+@keyframes fx-scan {
+  0% { background-position: 0 0; }
+  100% { background-position: 0 -200px; }
+}
+
+@layer utilities {
+  .fx-orb {
+    position: absolute;
+    border-radius: 9999px;
+    filter: blur(80px);
+    opacity: 0.55;
+    will-change: transform;
+    pointer-events: none;
+  }
+  .fx-orb-drift {
+    animation: fx-orb-drift 18s ease-in-out infinite;
+  }
+
+  .fx-scanline {
+    background-image: linear-gradient(
+      to bottom,
+      transparent 0,
+      transparent 1px,
+      rgba(34, 211, 238, 0.04) 2px,
+      transparent 3px
+    );
+    background-size: 100% 3px;
+    animation: fx-scan 12s linear infinite;
+  }
+
+  .fx-overlay-in[data-state="open"] {
+    animation: fx-overlay-in 180ms ease-out;
+  }
+  .fx-overlay-in[data-state="closed"] {
+    animation: fx-overlay-out 140ms ease-in;
+  }
+  .fx-content-in[data-state="open"] {
+    animation: fx-content-in 200ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .fx-content-in[data-state="closed"] {
+    animation: fx-content-out 160ms ease-in;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fx-rise,
+  .fx-rise-stagger > *,
+  .fx-pulse-dot,
+  .fx-shine::after {
+    animation: none !important;
+    transition: none !important;
+    transform: none !important;
+  }
+}
